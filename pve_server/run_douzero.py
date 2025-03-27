@@ -19,9 +19,11 @@ RealCard2EnvCard = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
                     'K': 13, 'A': 14, '2': 17, 'X': 20, 'D': 30}
 
 pretrained_dir = 'pretrained/douzero_pretrained'
+resnet_dir = 'pretrained/resnet5.7'
+douzero_2023_dir = 'pretrained/103344000'
 players = []
 for position in ['landlord', 'landlord_down', 'landlord_up']:
-    players.append(DeepAgent(position, pretrained_dir, use_onnx=True))
+    players.append(DeepAgent(position, douzero_2023_dir, use_onnx=True))
     
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -249,4 +251,4 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='DouZero backend')
     parser.add_argument('--debug', action='store_true')
     args = parser.parse_args()
-    app.run(debug=args.debug)
+    app.run(debug=args.debug,host='0.0.0.0',port=5000)

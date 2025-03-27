@@ -34,3 +34,4 @@ package-lock.json
 
 douzero_pretrained
 dmc_pretrained
+pve_server/pretrained/*/
